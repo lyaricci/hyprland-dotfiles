@@ -1,5 +1,5 @@
 #!/bin/bash
-. ~/.config/HyprV/hyprv.conf
+# . ~/.config/HyprV/hyprv.conf
 
 get_theme() {
 	# 	# Check which waybar theme is set
@@ -17,12 +17,12 @@ get_theme() {
 }
 
 update_theme() {
-	#set the xfce and GTK theme
 	xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita"
 	gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
 
 	xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita-dark"
 	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+	#set the xfce and GTK theme
 }
 
 # get_ver() {
@@ -45,7 +45,7 @@ restart_waybar() {
 set_current_background() {
 	get_theme
 	get_ver
-	swww img ~/.config/HyprV/backgrounds/spyxfamily.jpg
+	swww img ~/hyprland-dotfiles/backgrounds/spyxfamily.jpg
 
 	# if [[ ! -z "$SET_BG" ]]; then
 	# 	#set the current background
@@ -112,16 +112,15 @@ switch_version() {
 # }
 
 if [[ "$1" == "vswitch" ]]; then
-	switch_version
 	update_theme
 	restart_waybar
 elif [[ "$1" == "setbg" ]]; then
 	set_current_background
 	update_theme
 	restart_waybar
-# elif [[ "$1" == "swkb" ]]; then
-# 	switch_keyboard
-# 	restart_waybar
+elif [[ "$1" == "swkb" ]]; then
+	switch_keyboard
+	restart_waybar
 fi
 
 # need to show the version and tooltip
