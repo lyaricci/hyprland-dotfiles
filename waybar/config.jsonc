@@ -7,29 +7,27 @@
   "gtk-layer-shell": true,
   "height": 50,
   "modules-left": [
-    "clock",
-    "custom/weather",
-    "wlr/workspaces"
+    // "custom/weather",
+    "wlr/workspaces",
+    "custom/media"
   ],
-  "modules-center": [
-    "hyprland/window"
-  ],
+  // "modules-center": [
+  //   "hyprland/window"
+  // ],
   "modules-right": [
-    "network",
     "bluetooth",
+    "network",
+    "battery",
     "temperature",
     "custom/power_profile",
-    "battery",
     "backlight",
     "pulseaudio",
     "pulseaudio#microphone",
-    "tray",
-    "custom/myhyprv",
-    "custom/light_dark"
+    "clock",
+    "tray"
   ],
   "include": [
     "~/.config/waybar/mesu.jsonc"
-    // "~/.config/HyprV/waybar/conf/hyprv-util.jsonc"
   ],
   "hyprland/window": {
     "format": "{}"
@@ -140,5 +138,17 @@
     "tooltip-format": "{device_alias}",
     "tooltip-format-connected": " {device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}"
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": "",
+      "default": "🎜"
+    },
+    "escape": true,
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
+    // "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   }
 }
