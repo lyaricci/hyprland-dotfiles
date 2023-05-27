@@ -5,7 +5,7 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 50,
+  "height": 45,
   "modules-left": [
     // "custom/weather",
     "wlr/workspaces",
@@ -148,7 +148,6 @@
       "default": "🎜"
     },
     "escape": true,
-    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
-    // "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh" // Script in resources folder
   }
 }
