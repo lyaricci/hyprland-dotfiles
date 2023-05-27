@@ -107,7 +107,7 @@ tooltip {
 }
 
 #network {
-  color: #f9e2af;
+  color: #ff79c6;
 }
 
 #bluetooth {
@@ -116,21 +116,21 @@ tooltip {
 } 
 
 #pulseaudio {
-  color: #89b4fa;
+  color: #ffffa5;
 }
 
 #pulseaudio.microphone {
-  color: #cba6f7;
+  color: #bd93f9;
   border-left: 0px;
   border-right: 0px;
 }
 
 #battery {
-  color: #a6e3a1;
+  color: #50fa7b;
 }
 
 #backlight {
-  color: #eba0ac;
+  color: #ff6e6e;
 }
 
 /* #custom-weather { */
@@ -139,12 +139,3 @@ tooltip {
 /*     margin-left: 0px; */
 /* } */
 
-#custom-media {
-  background-color: #66cc99;
-  color: #2a5c45;
-  min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-  background-color: #66cc99;
-}
