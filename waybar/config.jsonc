@@ -5,32 +5,54 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 45,
+  "height": 18,
   "modules-left": [
-    // "custom/weather",
-    "wlr/workspaces",
-    "custom/media"
+    "idle_inhibitor",
+    "tray",
+    "hyprland/language"
   ],
-  // "modules-center": [
-  //   "hyprland/window"
-  // ],
+  "modules-center": [
+    "wlr/workspaces",
+    "clock",
+    "custom/updates"
+  ],
   "modules-right": [
     "bluetooth",
     "network",
     "battery",
-    "temperature",
-    "custom/power_profile",
-    "backlight",
     "pulseaudio",
     "pulseaudio#microphone",
-    "clock",
-    "tray"
+    "backlight",
+    "temperature",
+    "custom/lock_screen",
+    "custom/power_btn"
   ],
   "include": [
     "~/.config/waybar/mesu.jsonc"
   ],
-  "hyprland/window": {
-    "format": "{}"
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰛐",
+      "deactivated": "󰛑"
+    },
+    "tooltip": true
+  },
+  "hyprland/language": {
+    "interval": 30,
+    "format": " {}"
+    // "keyboard-name": "logitech-pro-gaming-keyboard",
+    // "signal": 8
+  },
+  "custom/power_btn": {
+    "format": "",
+    "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
+    "tooltip": false
+  },
+  "custom/lock_screen": {
+    "format": "",
+    "on-click": "sh -c '(sleep 0.5s; swaylock)' & disown",
+    "tooltip": false
   },
   "wlr/workspaces": {
     "disable-scroll": true,
@@ -49,32 +71,25 @@
       "10": []
     }
   },
-  "tray": {
-    "icon-size": 18,
-    "spacing": 10
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "󰃞",
-      "󰃟",
-      "󰃠"
-    ],
-    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
-    "min-length": 6
-  },
+  // "cpu": {
+  //   "interval": 10,
+  //   "format": "",
+  //   "max-length": 10,
+  //   "format-alt-click": "click-right",
+  //   "format-alt": " {usage}%",
+  //   "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+  // },
   "battery": {
     "states": {
-      "good": 95,
+      "good": 80,
       "warning": 30,
       "critical": 20
     },
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
+    "format-alt-click": "click-right",
+    "format-alt": "{icon} {capacity}%",
     "format-icons": [
       "󰂎",
       "󰁺",
@@ -91,8 +106,7 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "tooltip": false,
-    "format-muted": " Muted",
+    "format-muted": "",
     "on-click": "~/.config/waybar/scripts/volume --toggle",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
@@ -110,17 +124,45 @@
         "",
         ""
       ]
-    }
+    },
+    "tooltip": false
+    // "tooltip-format": "{icon} at {volume}%"
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
-    "format-source-muted": "  Muted",
+    "format-source-muted": "",
     "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
     "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
-    "scroll-step": 5
+    "scroll-step": 5,
+    "tooltip": false
+    // "tooltip-format": " at {volume}%"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-alt-click": "click-right",
+    "format-alt": "{icon} {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/updates": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/update-sys",
+    "on-click": "~/.config/waybar/scripts/update-sys update",
+    "interval": 300,
+    "tooltip": true
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -133,7 +175,7 @@
   },
   "bluetooth": {
     "format": " {status}",
-    "format-disabled": "", // an empty format will hide the module
+    "format-disabled": " off", // an empty format will hide the module
     "format-connected": " {device_alias}", // {num_connections}
     "tooltip-format": "{device_alias}",
     "tooltip-format-connected": " {device_enumerate}",
