@@ -28,12 +28,12 @@ notify_user() {
 
 # Increase brightness
 inc_backlight() {
-	brightnessctl -d *::kbd_backlight set 33%+ && get_icon && notify_user
+	brightnessctl -d *::kbd_backlight set 20%+ && get_icon && notify_user
 }
 
 # Decrease brightness
 dec_backlight() {
-	brightnessctl -d *::kbd_backlight set 33%- && get_icon && notify_user
+	brightnessctl -d *::kbd_backlight set 20%- && get_icon && notify_user
 }
 
 # Execute accordingly
