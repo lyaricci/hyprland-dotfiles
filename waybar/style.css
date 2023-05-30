@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-    background: #222;
+    background: transparent;
     color: #f9f9f9;
 }
 
@@ -71,35 +71,35 @@ tooltip label{
 }
 
 #bluetooth {
-  border-bottom: 2px solid #4ecdc4;
+  border-bottom: 2px solid #0000ff;
 }
 
 #network {
-  border-bottom: 2px solid #ff79c6;
+  border-bottom: 2px solid #008000;
 }
 
 #battery {
-  border-bottom: 2px solid #50fa7b;
+  border-bottom: 2px solid #ffff00;
 }
 
 #backlight {
-  border-bottom: 2px solid #f1fa8c;
+  border-bottom: 2px solid #ff0000;
 }
 
 #pulseaudio {
-  border-bottom: 2px solid #bd93f9;
+  border-bottom: 2px solid #ffa500;
 }
 
 #clock {
-  border-bottom: 2px solid #ced0ce;
+  border-bottom: 2px solid #4b0082;
 }
 
 #language {
-  border-bottom: 2px solid #bd93f9;
+  border-bottom: 2px solid #ee82ee;
 }
 
 #custom-power_btn {
   margin-right: 8px;
-  color: #ff5555;
+  color: #ff0000;
 }
 
