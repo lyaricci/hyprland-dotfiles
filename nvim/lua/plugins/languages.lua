@@ -3,7 +3,7 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- FORMATERS
+        -- FORMATTERS
         "stylua",
         "shellcheck",
         "shfmt",
