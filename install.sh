@@ -249,25 +249,25 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
 	# Link up the config files
 	echo -e "$CNT - Setting up the new config..."
 
-  ln -sf ~/hyprland-dotfiles/hypr/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/hypr/ ~/.config/
   echo "Hyprland linked"
 
-  ln -sf ~/hyprland-dotfiles/kitty/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/kitty/ ~/.config/
   echo "Kitty linked"
 
-  ln -sf ~/hyprland-dotfiles/mako/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/mako/ ~/.config/
   echo "Mako linked"
 
-  ln -sf ~/hyprland-dotfiles/swaylock/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/swaylock/ ~/.config/
   echo "Swaylock linked"
 
-  ln -sf ~/hyprland-dotfiles/waybar/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/waybar/ ~/.config/
   echo "Waybar linked"
 
-  ln -sf ~/hyprland-dotfiles/wlogout/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/wlogout/ ~/.config/
   echo "Wlogout linked"
 
-  ln -sf ~/hyprland-dotfiles/wofi/ ~/.config/
+  ln -sf ~/hyprland-dotfiles/.config/wofi/ ~/.config/
   echo "Wofi linked"
 
 	# Add the Nvidia env file to the config (if needed)

@@ -25,7 +25,7 @@ echo "Zsh dotfiles linked"
 
 # Install neovim
 yay -S neovim
-ln -sf ~/hyprland-dotfiles/nvim ~/.config/
+ln -sf ~/hyprland-dotfiles/.config/nvim ~/.config/
 sudo pacman -S python-pip
 pip install pynvim
 echo "Neovim installed and files linked"
