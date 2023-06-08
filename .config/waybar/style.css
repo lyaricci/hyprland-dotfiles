@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-    background: transparent;
+    background: #000;
     color: #f9f9f9;
 }
 
@@ -70,36 +70,39 @@ tooltip label{
   margin: 0 4px;
 }
 
-#bluetooth {
-  border-bottom: 2px solid #0000ff;
-}
-
-#network {
-  border-bottom: 2px solid #008000;
-}
-
-#battery {
-  border-bottom: 2px solid #ffff00;
-}
-
-#backlight {
-  border-bottom: 2px solid #ff0000;
-}
-
-#pulseaudio {
-  border-bottom: 2px solid #ffa500;
-}
-
-#clock {
-  border-bottom: 2px solid #4b0082;
-}
-
-#language {
-  border-bottom: 2px solid #ee82ee;
-}
+/* #bluetooth { */
+/*   border-bottom: 2px solid #0000ff; */
+/* } */
+/**/
+/* #network { */
+/*   border-bottom: 2px solid #008000; */
+/* } */
+/**/
+/* #battery { */
+/*   border-bottom: 2px solid #ffff00; */
+/* } */
+/**/
+/* #backlight { */
+/*   border-bottom: 2px solid #ff0000; */
+/* } */
+/**/
+/* #pulseaudio { */
+/*   border-bottom: 2px solid #ffa500; */
+/* } */
+/**/
+/* #clock { */
+/*   border-bottom: 2px solid #4b0082; */
+/* } */
+/**/
+/* #language { */
+/*   border-bottom: 2px solid #ee82ee; */
+/* } */
 
 #custom-power_btn {
   margin-right: 8px;
   color: #ff0000;
 }
 
+#window {
+  color: #f9f9f9;
+}
