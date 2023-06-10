@@ -6,6 +6,9 @@ sudo pacman -Syu
 # Install zsh
 sudo pacman -S zsh
 
+# Install VSCODE
+yay -S visual-studio-code-bin
+
 # Install Noto Fonts CJK
 yay -S noto-fonts-cjk
 
