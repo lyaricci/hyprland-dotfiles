@@ -6,6 +6,9 @@ sudo pacman -Syu
 # Install zsh
 sudo pacman -S zsh
 
+# Install Noto Fonts CJK
+yay -S noto-fonts-cjk
+
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "Oh-my-zsh installed"
