@@ -1,23 +1,32 @@
 * {
 	background-image: none;
 }
+
 window {
-	background-color: rgba(12, 12, 12, 0.9);
-}
-button {
-  color: #fefefe;
-	background-color: #1E1E1E;
-	border-style: solid;
-	border-width: 2px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 25%;
+    font-family: JetBrains Mono Nerd Font;
+    font-size: 1.2rem;
+    color: #f9f9f9;
+    background-color: #333;
 }
 
-button:focus, button:active, button:hover {
-  color: #000;
-	background-color: #ff79c6;
-	outline-style: none;
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border: none;
+    background-color: #333;
+    margin: 4px;
+    transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(11, 11, 11, 0.4);
+}
+
+button:focus {
+    background-color: rgba(11, 11, 11, 0.4);
+    color: #f9f9f9;
+    border: 2px solid #f9f9f9;
 }
 
 #lock {
