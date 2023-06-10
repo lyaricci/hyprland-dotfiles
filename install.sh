@@ -185,47 +185,46 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 	# 		install_software $SOFTWR
 	# 	done
 
-		# Update config
-		sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
-		sudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img
-		echo -e "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf &>>$INSTLOG
-	fi
-
-	# Install the correct hyprland version
-	echo -e "$CNT - Installing Hyprland, this may take a while..."
-	if [[ "$ISNVIDIA" == true ]]; then
-		# Check for hyprland and remove it so the -nvidia package can be installed
-		if yay -Q hyprland &>>/dev/null; then
-			yay -R --noconfirm hyprland &>>$INSTLOG &
-		fi
-		install_software hyprland-nvidia
-	else
-		install_software hyprland
-	fi
-
-	# Fix needed for waybar-hyprland
-	export CC=gcc-12 CXX=g++-12
-
-	# Stage 1 - main components
-	echo -e "$CNT - Installing main components, this may take a while..."
-	for SOFTWR in ${install_stage[@]}; do
-		install_software $SOFTWR
-	done
-
-	# Start the bluetooth service
-	echo -e "$CNT - Starting the Bluetooth Service..."
-	sudo systemctl enable --now bluetooth.service &>>$INSTLOG
-	sleep 2
-
-	# Enable the sddm login manager service
-	echo -e "$CNT - Enabling the SDDM Service..."
-	sudo systemctl enable sddm &>>$INSTLOG
-	sleep 2
-
-	# Clean out other portals
-	echo -e "$CNT - Cleaning out conflicting xdg portals..."
-	yay -R --noconfirm xdg-desktop-portal-gnome xdg-desktop-portal-gtk &>>$INSTLOG
+	# Update config
+	sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+	sudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img
+	echo -e "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf &>>$INSTLOG
 fi
+
+# Install the correct hyprland version
+echo -e "$CNT - Installing Hyprland, this may take a while..."
+if [[ "$ISNVIDIA" == true ]]; then
+	# Check for hyprland and remove it so the -nvidia package can be installed
+	if yay -Q hyprland &>>/dev/null; then
+		yay -R --noconfirm hyprland &>>$INSTLOG &
+	fi
+	install_software hyprland-nvidia
+else
+	install_software hyprland
+fi
+
+# Fix needed for waybar-hyprland
+export CC=gcc-12 CXX=g++-12
+
+# Stage 1 - main components
+echo -e "$CNT - Installing main components, this may take a while..."
+for SOFTWR in ${install_stage[@]}; do
+	install_software $SOFTWR
+done
+
+# Start the bluetooth service
+echo -e "$CNT - Starting the Bluetooth Service..."
+sudo systemctl enable --now bluetooth.service &>>$INSTLOG
+sleep 2
+
+# Enable the sddm login manager service
+echo -e "$CNT - Enabling the SDDM Service..."
+sudo systemctl enable sddm &>>$INSTLOG
+sleep 2
+
+# Clean out other portals
+echo -e "$CNT - Cleaning out conflicting xdg portals..."
+yay -R --noconfirm xdg-desktop-portal-gnome xdg-desktop-portal-gtk &>>$INSTLOG
 
 # Copy config files
 read -rep $'[\e[1;33mACTION\e[0m] - Would you like to copy config files? (Y,n) ' CFG
@@ -234,41 +233,41 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
 
 	# Setup each application
 	# Check for existing config folders and backup
-	for DIR in hypr kitty mako swaylock waybar wlogout wofi; do
-		DIRPATH=~/.config/$DIR
-		if [ -d "$DIRPATH" ]; then
-			echo -e "$CAT - Config for $DIR located, backing up."
-			mv $DIRPATH $DIRPATH-back &>>$INSTLOG
-			echo -e "$COK - Backed up $DIR to $DIRPATH-back."
-		fi
-
-		# Make new empty folders
-		mkdir -p $DIRPATH &>>$INSTLOG
-	done
+	# for DIR in hypr kitty mako swaylock waybar wlogout wofi; do
+	# 	DIRPATH=~/.config/$DIR
+	# 	if [ -d "$DIRPATH" ]; then
+	# 		echo -e "$CAT - Config for $DIR located, backing up."
+	# 		mv $DIRPATH $DIRPATH-back &>>$INSTLOG
+	# 		echo -e "$COK - Backed up $DIR to $DIRPATH-back."
+	# 	fi
+	#
+	# 	# Make new empty folders
+	# 	mkdir -p $DIRPATH &>>$INSTLOG
+	# done
 
 	# Link up the config files
 	echo -e "$CNT - Setting up the new config..."
 
-  ln -sf ~/hyprland-dotfiles/.config/hypr/ ~/.config/
-  echo "Hyprland linked"
+	ln -sf ~/hyprland-dotfiles/.config/hypr/ ~/.config/
+	echo "Hyprland linked"
 
-  ln -sf ~/hyprland-dotfiles/.config/kitty/ ~/.config/
-  echo "Kitty linked"
+	ln -sf ~/hyprland-dotfiles/.config/kitty/ ~/.config/
+	echo "Kitty linked"
 
-  ln -sf ~/hyprland-dotfiles/.config/mako/ ~/.config/
-  echo "Mako linked"
+	ln -sf ~/hyprland-dotfiles/.config/mako/ ~/.config/
+	echo "Mako linked"
 
-  ln -sf ~/hyprland-dotfiles/.config/swaylock/ ~/.config/
-  echo "Swaylock linked"
+	ln -sf ~/hyprland-dotfiles/.config/swaylock/ ~/.config/
+	echo "Swaylock linked"
 
-  ln -sf ~/hyprland-dotfiles/.config/waybar/ ~/.config/
-  echo "Waybar linked"
+	ln -sf ~/hyprland-dotfiles/.config/waybar/ ~/.config/
+	echo "Waybar linked"
 
-  ln -sf ~/hyprland-dotfiles/.config/wlogout/ ~/.config/
-  echo "Wlogout linked"
+	ln -sf ~/hyprland-dotfiles/.config/wlogout/ ~/.config/
+	echo "Wlogout linked"
 
-  ln -sf ~/hyprland-dotfiles/.config/wofi/ ~/.config/
-  echo "Wofi linked"
+	ln -sf ~/hyprland-dotfiles/.config/wofi/ ~/.config/
+	echo "Wofi linked"
 
 	# Add the Nvidia env file to the config (if needed)
 	# if [[ "$ISNVIDIA" == true ]]; then
