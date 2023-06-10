@@ -9,8 +9,8 @@
   "modules-left": [
     "idle_inhibitor",
     "tray",
-    "hyprland/language",
-    "hyprland/window"
+    "hyprland/language"
+    // "hyprland/window"
   ],
   "modules-center": [
     "wlr/workspaces",
