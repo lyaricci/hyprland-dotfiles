@@ -1,18 +1,18 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "Ubuntu Nerd Font";
     font-weight: bold;
     font-size: 14px;
 }
 
 window#waybar {
-    background: #000;
+    background: #222;
     color: #f9f9f9;
 }
 
 tooltip {
-    background: #000;
+    background: #222;
     border-radius: 10px;
 }
 
