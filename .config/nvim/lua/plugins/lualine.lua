@@ -7,7 +7,7 @@ return {
 
       return {
         options = {
-          theme = "horizon",
+          -- theme = "horizon",
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
         },
