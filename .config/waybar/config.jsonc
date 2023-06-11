@@ -7,15 +7,17 @@
   "gtk-layer-shell": true,
   "height": 18,
   "modules-left": [
-    "idle_inhibitor",
-    "tray",
-    "hyprland/language"
+    // "idle_inhibitor",
+    "hyprland/language",
+    "custom/playerctl",
+    "custom/playerlabel",
     // "hyprland/window"
+    "custom/updates"
   ],
   "modules-center": [
+    "tray",
     "wlr/workspaces",
-    "clock",
-    "custom/updates"
+    "clock"
   ],
   "modules-right": [
     "bluetooth",
@@ -184,5 +186,31 @@
   },
   "hyprland/window": {
     "format": "{}"
+  },
+  "custom/playerctl": {
+    "format": "{icon}",
+    "return-type": "json",
+    "max-length": 64,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    // "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl play-pause",
+    // "on-click-right": "playerctl next",
+    "format-icons": {
+      "Paused": "󰐌",
+      "Playing": "󰏥"
+    }
+  },
+  "custom/playerlabel": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 40,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}}  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    // "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl play-pause",
+    // "on-click-right": "playerctl next",
+    "format-icons": {
+      "Pause": "󰐌",
+      "Playing": "󰏥"
+    }
   }
 }
